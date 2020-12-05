@@ -1,0 +1,56 @@
+fieldset{
+     width:90%;
+     border:1px dashed #666;
+     margin:40px auto;
+}
+legend{
+     background-color:#F9EE70;
+     height:120px;
+     height:30px;
+     color:#630;
+     font-weight:bolder;
+     font-size:20px;
+     line-height:30px;
+     margin:-20px 10px 10px;
+     padding:0 10px;
+}
+div.row{
+     margin:10px;
+     padding:5px;
+}
+div.row label{
+     height:20px;
+     font-size:16px;
+     line-height:20px;
+     margin:0 10px;
+}
+input.txt{
+     background-color:#F9EE70;
+     color:#333;
+     width:150px;
+     height:20px;
+     margin:0 10px;
+     font-size:16px;
+     line-height:20px;
+     border:none;
+     border-bottom:1px solid #565656;
+}
+input.txt:focus{
+     color:#333;
+     background-color: #FF0;
+     border-bottom:1px solid #F00;
+}
+select{
+     width:100px;
+}
+option{
+     text-align:center;
+}
+input.btn{
+     width:50px;
+     height:20px;
+     color:#000008B;
+     background-color: transparent;
+     border:0;
+     padding:0;
+}
