@@ -265,7 +265,7 @@ public class AuthServlet extends BaseServlet {
         for (int i = 1; i <= 4; i++) {
             int index = ran.nextInt(str.length());
             //获取字符
-            char ch = str.charAt(index);//随机字符
+            char ch = str.charAt(index);
             verifyCode += ch;
             //2.3写验证码
             //具体验证码显示位置定义
