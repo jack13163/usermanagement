@@ -83,7 +83,7 @@
                             <div>
                                 <input type="text" class="input input-big" name="code" placeholder="验证码"
                                        data-validate="required:请填写验证码"/>
-                                <img id="checkCode" src="<%=basePath%>/auth?method=VerifyCode" />
+                                <img id="checkCode" src="<%=basePath%>/auth?method=verifyCode" />
                             </div>
                         </div>
                     </div>

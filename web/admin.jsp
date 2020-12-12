@@ -1,14 +1,8 @@
 <%@page import="jack.smartbi.entity.User" pageEncoding="UTF-8" language="java" %>
-<%@ page import="java.util.List" %>
-<%@ page import="jack.smartbi.service.UserService" %>
-<%@ page import="jack.smartbi.service.impl.UserServiceImpl" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
-    //查询用户列表
-    UserService userService = new UserServiceImpl();
-    List<User> userList = userService.getUserList();
 %>
 
 <!DOCTYPE html>
@@ -21,6 +15,7 @@
     <link rel="stylesheet" href="css/common.css">
     <link rel="stylesheet" href="css/pintuer.css">
     <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.bootcss.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" rel="external nofollow" >
     <script src="js/jquery.js"></script>
 
     <script type="text/javascript">
@@ -28,7 +23,31 @@
         $(function () {
             $("#out").click(function () {
                 return window.confirm("你需要退出登陆吗?")
-            })
+            });
+
+            $.ajax({
+                url:'<%=basePath%>user?method=userListJson',
+                type:'get',
+                dataType:'json',
+                success:function(data){
+                    //方法中传入的参数data为后台获取的数据
+                    console.log(data);
+                    for(var i = 0; i < data.length; i++){
+                        var tr = '<td>'+data[i].uid+'</td>'+'<td>'+data[i].uname+'</td>'
+                            +'<td>'+data[i].pwd+'</td>'+'<td>'+data[i].salt+'</td>'
+                            +'<td>'+data[i].email+'</td>'
+                            +'<td>'+ (data[i].status == -2 ? '锁定' : data[i].status == 0 ? '正常' : '未通过邮箱验证')+'</td>'
+                            +'<td>';
+                        if(data[i].status == -2){
+                            tr += '<a href="javascript:void(0);" onclick="enableUser(' + data[i].uid + ')">启用</a>&nbsp;&nbsp;';
+                        }else{
+                            tr += '<a href="javascript:void(0);" onclick="disableUser(' + data[i].uid + ')">禁用</a>&nbsp;&nbsp;';
+                        }
+                        tr += '<a href="javascript:void(0);" onclick="delUser(' + data[i].uid + ')">删除</a>'+ '</td>'
+                        $("#tabletest").append('<tr>'+tr+'</tr>');
+                    }
+                }
+            });
         });
 
         // 虚拟表单的形式提交post请求
@@ -106,7 +125,7 @@
 
 <fieldset>
     <legend>用户列表</legend>
-    <table width="100%" frame="border" style="text-align:center;">
+    <table class="table table-bordered" id='tabletest'>
         <tr>
             <td>用户编号</td>
             <td>用户名</td>
@@ -116,29 +135,6 @@
             <td>状态</td>
             <td>操作</td>
         </tr>
-
-        <c:forEach var="c" items="<%=userList%>">
-            <tr>
-                <td><c:out value="${c.uid }" escapeXml="true"/></td>
-                <td><c:out value="${c.uname }" escapeXml="true"/></td>
-                <td><c:out value="${c.pwd }" escapeXml="true"/></td>
-                <td><c:out value="${c.salt }" escapeXml="true"/></td>
-                <td><c:out value="${c.email }" escapeXml="true"/></td>
-                <td>${c.status == -2 ? '锁定' : c.status == 0 ? '正常' : '未通过邮箱验证' }</td>
-
-                <td>
-                    <c:choose>
-                        <c:when test="${c.status eq -2}">
-                            <a href="javascript:void(0);" onclick="enableUser(${c.uid })">启用</a>
-                        </c:when>
-                        <c:otherwise>
-                            <a href="javascript:void(0);" onclick="disableUser(${c.uid })">禁用</a>
-                        </c:otherwise>
-                    </c:choose>
-                    <a href="javascript:void(0);" onclick="delUser(${c.uid })">删除</a>
-                </td>
-            </tr>
-        </c:forEach>
     </table>
 </fieldset>
 </body>

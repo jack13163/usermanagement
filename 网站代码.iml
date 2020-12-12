@@ -21,5 +21,6 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="servlet-api" level="project" />
     <orderEntry type="library" name="log4j-1.2.17" level="project" />
+    <orderEntry type="library" name="fastjson-1.2.75" level="project" />
   </component>
 </module>
