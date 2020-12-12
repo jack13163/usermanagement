@@ -33,7 +33,7 @@
 
     <div style="position:relative;left:800px"><span style="font-size:20px;color:white;">
     欢迎:<%=((User) session.getAttribute("user")).getUname() %>进入系统</span> &nbsp;&nbsp;
-        <a id="out" class="button button-little bg-red" href="<%=basePath%>/auth?method=UserOut">
+        <a id="out" class="button button-little bg-red" href="<%=basePath%>/auth?method=userOut">
             <span>退出登录</span>
         </a>
     </div>
@@ -41,7 +41,7 @@
 
 <div>
     <%if(((User) session.getAttribute("user")).getUname().equals("admin")){%>
-    <a href="<%=basePath%>/user?method=UserList">
+    <a href="<%=basePath%>/user?method=userList">
         <span>用户管理</span>
     </a>
     <%}%>

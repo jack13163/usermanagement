@@ -1,5 +1,7 @@
 package jack.smartbi.servlet;
 
+import org.apache.log4j.Logger;
+
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -11,6 +13,8 @@ import java.lang.reflect.Method;
  * 通过一个隐藏域和反射机制动态调用同一个servlet的不同的方法
  */
 public abstract class BaseServlet extends HttpServlet {
+    private static final Logger logger = Logger.getLogger(BaseServlet.class.getName());
+
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp)
             throws IOException {
@@ -28,7 +32,7 @@ public abstract class BaseServlet extends HttpServlet {
             //反射执行的方法
             m.invoke(this, req, resp);
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error(e.getMessage(), e);
         }
     }
 }

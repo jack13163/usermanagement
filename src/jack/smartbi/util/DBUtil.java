@@ -7,8 +7,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
+/**
+ * 数据访问帮助类
+ */
 public class DBUtil {
-    //声明全局变量记录jdbc参数
     private static String driver;
     private static String url;
     private static String username;
@@ -22,7 +24,8 @@ public class DBUtil {
         Properties p = new Properties();
         //加载
         try {
-            p.load(in);//会将属性配置文件的所有数据存储到Properties对象中
+            //会将属性配置文件的所有数据存储到Properties对象中
+            p.load(in);
             //将读取的jdbc参数赋值给全局变量
             driver = p.getProperty("driver");
             url = p.getProperty("url");

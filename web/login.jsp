@@ -24,7 +24,7 @@
             img.onclick = function(){
                 // 加时间戳，避免浏览器缓存图片导致点击切换不了验证码
                 var date = new Date().getTime();
-                img.src = "<%=basePath%>/auth?method=VerifyCode&"+date;
+                img.src = "<%=basePath%>/auth?method=verifyCode&"+date;
             }
         }
     </script>
@@ -38,7 +38,7 @@
             </div>
             <form action="<%=basePath%>/auth" method="post">
                 <!-- 声明处理请求的方法 -->
-                <input type="hidden" name="method" value="Userlogin"/>
+                <input type="hidden" name="method" value="userlogin"/>
                 <div class="panel loginbox">
                     <div class="text-center margin-big padding-big-top"><h1>用户管理系统</h1></div>
 

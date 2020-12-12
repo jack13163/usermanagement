@@ -31,6 +31,15 @@
         <servlet-name>AuthServlet</servlet-name>
         <servlet-class>jack.smartbi.servlet.AuthServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Log4jServlet</servlet-name>
+        <servlet-class>jack.smartbi.servlet.Log4jServlet</servlet-class>
+        <init-param>
+            <param-name>log4j</param-name>
+            <param-value>/log4j.properties</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
 
     <servlet-mapping>
         <servlet-name>UserServlet</servlet-name>

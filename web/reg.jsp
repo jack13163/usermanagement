@@ -64,7 +64,7 @@
 <div>
     <form method="post" action="<%=basePath%>/auth" onsubmit="return check();">
         <!--隐藏域，用于区分后台调用的servlet的方法-->
-        <input type="hidden" name="method" value="UserReg"/>
+        <input type="hidden" name="method" value="userReg"/>
         <fieldset>
             <div>
                 <label>用户名：</label>

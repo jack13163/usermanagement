@@ -2,6 +2,7 @@ package jack.smartbi.servlet;
 
 import jack.smartbi.service.UserService;
 import jack.smartbi.service.impl.UserServiceImpl;
+import org.apache.log4j.Logger;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -9,6 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 public class UserServlet extends BaseServlet {
+    private static final Logger logger = Logger.getLogger(UserServlet.class.getName());
+
     UserService userService = new UserServiceImpl();
 
     /**
@@ -18,8 +21,8 @@ public class UserServlet extends BaseServlet {
      * @param resp
      * @throws IOException
      */
-    public void UserList(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
-        // 重定向
+    public void userList(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
+        logger.info("重定向到管理员用户列表");
         resp.sendRedirect(req.getContextPath() + "/admin.jsp");
     }
 
@@ -30,7 +33,7 @@ public class UserServlet extends BaseServlet {
      * @param resp
      * @throws IOException
      */
-    public void UserEnable(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+    public void userEnable(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         //获取请求信息
         String uid = req.getParameter("uid");
         if(uid != null) {
@@ -46,7 +49,7 @@ public class UserServlet extends BaseServlet {
      * @param resp
      * @throws IOException
      */
-    public void UserDisable(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+    public void userDisable(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         //获取请求信息
         String uid = req.getParameter("uid");
         if(uid != null) {
@@ -62,7 +65,7 @@ public class UserServlet extends BaseServlet {
      * @param resp
      * @throws IOException
      */
-    public void UserDelete(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+    public void userDelete(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         //获取请求信息
         String uid = req.getParameter("uid");
         if(uid != null) {

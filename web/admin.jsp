@@ -55,7 +55,7 @@
             if (flag) {
                 var url = "<%=basePath%>" + "user";
                 var params = {
-                    method: 'UserEnable',
+                    method: 'userEnable',
                     uid: uid
                 };
                 post(url, params);
@@ -68,7 +68,7 @@
             if (flag) {
                 var url = "<%=basePath%>" + "user";
                 var params = {
-                    method: 'UserDisable',
+                    method: 'userDisable',
                     uid: uid
                 };
                 post(url, params);
@@ -81,7 +81,7 @@
             if (flag) {
                 var url = "<%=basePath%>" + "user";
                 var params = {
-                    method: 'UserDelete',
+                    method: 'userDelete',
                     uid: uid
                 };
                 post(url, params);

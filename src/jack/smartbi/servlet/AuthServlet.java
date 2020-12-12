@@ -21,8 +21,8 @@ import java.util.Random;
  * 用于处理认证逻辑的处理器，过滤器忽略该过滤器
  */
 public class AuthServlet extends BaseServlet {
-    UserService userService = new UserServiceImpl();
     UserLoginInfoService userLoginInfoService = new UserLoginInfoServiceImpl();
+    UserService userService = new UserServiceImpl();
 
     /**
      * 用户邮箱验证
@@ -31,7 +31,7 @@ public class AuthServlet extends BaseServlet {
      * @param resp
      * @throws IOException
      */
-    public void UserActive(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+    public void userActive(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         //获取请求信息
         String uid = req.getParameter("uid");
         int i = userService.activeUser(Integer.parseInt(uid));
@@ -49,7 +49,7 @@ public class AuthServlet extends BaseServlet {
      * @param resp
      * @throws IOException
      */
-    public void UserReg(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+    public void userReg(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         //获取请求信息
         String uname = req.getParameter("uname");
         String pwd = req.getParameter("pwd");
@@ -124,7 +124,7 @@ public class AuthServlet extends BaseServlet {
      * <p>
      * 3.如果在相同IP下，同一个用户，在30分钟内密码错误次数达到设定的错误次数，就不让用户登录了。
      */
-    public void Userlogin(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+    public void userlogin(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         // 获取请求信息
         String uname = req.getParameter("uname");
         String pwd = req.getParameter("pwd");
@@ -222,7 +222,7 @@ public class AuthServlet extends BaseServlet {
      * @param resp
      * @throws IOException
      */
-    public void UserOut(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+    public void userOut(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         // 获取session、销毁session
         HttpSession hs = req.getSession();
         hs.invalidate();
@@ -235,7 +235,7 @@ public class AuthServlet extends BaseServlet {
      * @param req
      * @param resp
      */
-    public void VerifyCode(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+    public void verifyCode(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         HttpSession hs = req.getSession();
 
         //定义需要显示的图片的宽度和高度
